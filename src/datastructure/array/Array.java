@@ -4,14 +4,14 @@ package datastructure.array;
  * @author hejiawei
  * @date 2020/11/2 11:02
  */
-public class Array {
+public class Array<E> {
 
-    private int[] data;
+    private E[] data;
     private int size;
 
     //构造函数，传入数组的容量capacity构造数组array
     public Array(int capacity) {
-        data = new int[capacity];
+        data = (E[])new Object[capacity];
         size = 0;
     }
 
@@ -36,7 +36,7 @@ public class Array {
     }
 
     //向所有元素后添加一个新元素
-    public void addLast(int e) {
+    public void addLast(E e) {
 //        if (size == data.length) {
 //            throw new IllegalArgumentException("addLast failed, array is full");
 //        }
@@ -47,14 +47,15 @@ public class Array {
     }
 
     //从头部添加一个新元素
-    public void addFirst(int e) {
+    public void addFirst(E e) {
         insert(0, e);
     }
 
     //在第index位置插入元素
-    public void insert(int index, int e) {
+    public void insert(int index, E e) {
         if (size == data.length) {
-            throw new IllegalArgumentException("insert failed, array is full");
+//            throw new IllegalArgumentException("insert failed, array is full");
+            resize(2 * data.length);
         }
         //判断下标是否符合
         if (index < 0 || index > size) {
@@ -70,7 +71,7 @@ public class Array {
     }
 
     //获取index下标的元素
-    public int get(int index) {
+    public E get(int index) {
         //判断下标是否符合
         if (index < 0 || index > size) {
             throw new IllegalArgumentException("get failed, index is illegal");
@@ -80,7 +81,7 @@ public class Array {
     }
 
     //更新下标为index的元素
-    public void set(int index, int e) {
+    public void set(int index, E e) {
         //判断下标是否符合
         if (index < 0 || index > size) {
             throw new IllegalArgumentException("set failed, index is illegal");
@@ -91,9 +92,9 @@ public class Array {
     }
 
     //查找是否有元素e
-    public boolean contains(int e) {
+    public boolean contains(E e) {
         for (int i = 0; i < size; i++) {
-            if (e == data[i]) {
+            if (e.equals(data[i])) {
                 return true;
             }
         }
@@ -101,9 +102,9 @@ public class Array {
     }
 
     //查找某个元素下标，不存在则返回-1
-    public int find(int e) {
+    public int find(E e) {
         for (int i = 0; i < size; i++) {
-            if (e == data[i]) {
+            if (e.equals(data[i])) {
                 return i;
             }
         }
@@ -111,32 +112,33 @@ public class Array {
     }
 
     //从数组中删除某个元素，并返回删除元素
-    public int remove(int index) {
+    public E remove(int index) {
         if (index < 0 || index > size) {
             throw new IllegalArgumentException("remove failed, index is illegal");
         }
 
-        int ret = data[index];
+        E ret = data[index];
 
         for (int i = index + 1; i < size; i++) {
             data[i - 1] = data[i];
         }
         size--;
+        data[size] = null;
         return ret;
     }
 
     //从数组中删除第一个元素
-    public int removeFirst() {
+    public E removeFirst() {
         return remove(0);
     }
 
     //从数组中删除最后一个元素
-    public int removeLast() {
+    public E removeLast() {
         return remove(size - 1);
     }
 
     //删除某个元素
-    public void removeElement(int e) {
+    public void removeElement(E e) {
         int index = find(e);
         if (index != -1) {
             remove(index);
@@ -157,6 +159,15 @@ public class Array {
         }
         res.append(']');
         return res.toString();
+    }
+
+    //动态扩容，一旦数组容量不够，则在现有基础上扩充为2倍
+    private void resize(int capacity) {
+        E[] newData = (E[])new Object[capacity];
+        for (int i = 0; i < size; i++) {
+            newData[i] = data[i];
+        }
+        data = newData;
     }
 
 }
