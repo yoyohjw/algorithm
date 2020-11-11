@@ -4,7 +4,7 @@ package datastructure.queue;
  * @author hejiawei
  * @date 2020/11/5 16:38
  */
-public class MainQueue {
+public class MainArrayQueue {
 
     public static void main(String[] args) {
         ArrayQueue<Integer> queue = new ArrayQueue<>();
@@ -14,6 +14,7 @@ public class MainQueue {
             System.out.println(queue);
 
             if (i % 3 == 2) {
+                System.out.println("下标为：" + i);
                 //取出元素
                 queue.dequeue();
                 System.out.println(queue);

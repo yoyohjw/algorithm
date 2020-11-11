@@ -5,6 +5,7 @@ import datastructure.array.Array;
 /**
  * @author hejiawei
  * @date 2020/11/5 15:33
+ * 数组队列
  */
 public class ArrayQueue<E> implements Queue<E> {
 
