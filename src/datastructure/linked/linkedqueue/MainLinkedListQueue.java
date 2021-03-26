@@ -1,13 +1,12 @@
-package datastructure.queue;
+package datastructure.linked.linkedqueue;
 
-/**
- * @author hejiawei
- * @date 2020/11/5 16:38
- */
-public class MainArrayQueue {
+import datastructure.arrays.queue.ArrayQueue;
+
+public class MainLinkedListQueue {
+
 
     public static void main(String[] args) {
-        ArrayQueue<Integer> queue = new ArrayQueue<>();
+        LinkedListQueue<Integer> queue = new LinkedListQueue<>();
         for (int i = 0; i < 10; i++) {
             //向队列存入元素
             queue.enqueue(i);
@@ -21,9 +20,6 @@ public class MainArrayQueue {
             }
 
         }
-
-
     }
-
 
 }

@@ -1,4 +1,4 @@
-package datastructure.queue;
+package datastructure.arrays.queue;
 
 /**
  * @author hejiawei

@@ -1,6 +1,6 @@
-package datastructure.queue;
+package datastructure.arrays.queue;
 
-import datastructure.array.Array;
+import datastructure.arrays.array.Array;
 
 /**
  * @author hejiawei

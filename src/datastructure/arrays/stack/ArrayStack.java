@@ -1,6 +1,6 @@
-package datastructure.stack;
+package datastructure.arrays.stack;
 
-import datastructure.array.Array;
+import datastructure.arrays.array.Array;
 
 /**
  * @author hejiawei
@@ -37,11 +37,19 @@ public class ArrayStack<E> implements Stack<E> {
         array.addLast(e);
     }
 
+    /**
+     * 取出 - 会删除元素
+     * @return
+     */
     @Override
     public E pop() {
         return array.removeLast();
     }
 
+    /**
+     * 取出 但不删除元素
+     * @return
+     */
     @Override
     public E peek() {
         return array.getLast();
