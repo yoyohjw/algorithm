@@ -36,7 +36,7 @@ public class LinkedListStack<E> implements Stack<E> {
 
     @Override
     public E peek() {
-        return null;
+        return linkedList.getFirst();
     }
 
     @Override
